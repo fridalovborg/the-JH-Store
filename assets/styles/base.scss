@@ -1,0 +1,132 @@
+/* ------------------------------------------------------------------
+		MOBILE
+------------------------------------------------------------------ */
+body {
+	font-family: 'Open Sans';
+}
+body .menu-bg {
+	display: none;
+}
+body .menu {
+	display: none;
+}
+body.menu-active .menu {
+	display: block;
+}
+body.menu-active .mobile-menu { 
+	display: none;
+}
+body.menu-active .mobile-menu-exit { 
+	display: block;
+}
+body .mobile-menu-exit {
+	display: none;
+}
+h1 {
+	font-size: 1.6em;
+	font-weight: 300;
+	font-style: normal;
+	color: $jh-color;
+}
+p {
+	font-weight: 300;
+	font-style: normal;
+	line-height: 26px;
+	font-size: 1.1em;
+}
+header {
+	background-color: #FFF;
+	height: 100px;
+	width: 100%;
+	line-height: 60px;
+	border-bottom: 1px solid $jh-color;
+	position: relative;
+	text-align: center;
+	z-index: 5;
+}
+.menu {
+	position: relative;
+	z-index: 2;
+}
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	padding-top: 200px;
+
+	li {
+		font-weight: 300;
+    	font-style: normal;
+    	font-size: 1.4em;
+	}
+	a:hover {
+		text-decoration: none;
+		border-bottom: 2px solid $jh-details;
+	}
+}
+.logo {
+	width: 130px;
+	position: absolute;
+	top: 30px;
+	left: 50%; 
+	transform: translate(-50%,0); 
+}
+.header-img {
+	width: 100%;
+	padding-top: 75vh;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url('../images/header.jpg');
+}
+.mobile-menu, .mobile-menu-exit {
+	position: absolute;
+	right: 40px;
+    top: 30px;
+    z-index: 3;
+}
+.menu-bg {
+	background: #FFF;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+main {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.txt-content {
+	margin-bottom: 100px;
+}
+.feature-img {
+	width: 100%;
+	padding-top: 90%;
+	background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+footer {
+	height: 100px;
+	line-height: 100px;
+	position: relative;
+
+	p {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 0.9em;
+		color: $jh-color;
+		float: left;
+		line-height: 100px;
+
+		&:last-child {
+			float: right;
+		}
+	}
+	.social-media {
+		display: none;
+	}
+}

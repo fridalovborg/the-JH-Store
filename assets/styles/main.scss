@@ -1,0 +1,41 @@
+//grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+$grid-gutter-width:     40px;
+
+$jh-color:              #929497;
+$jh-details:            #e0996c;
+
+$theme-colors: (
+    primary: $jh-color,
+    secondary: $jh-color,
+    success: $jh-color,
+    info: $jh-color,
+    warning: $jh-color,
+    danger: $jh-color,
+    light: $jh-color,
+    dark: $jh-color
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 961px
+);
+
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
+@import "../../bower_components/bootstrap/scss/bootstrap.scss";
+
+// @import "components/comments";
+// @import "components/forms";
+// @import "components/wp-classes";
+
+// @import "layouts/tinymce";
+
+@import 'base';         //mobile
+// @import 'landscape';    //mobile-lanscape
+@import 'tablet';       //tablet
+// @import 'desktop';      //desktop
+@import 'fonts';        //fonts
