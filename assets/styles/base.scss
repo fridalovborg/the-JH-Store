@@ -2,15 +2,15 @@
 		MOBILE
 ------------------------------------------------------------------ */
 body {
-	font-family: 'Open Sans';
+	font-family: 'Futura Book';
 }
 body .menu-bg {
 	display: none;
 }
-body .menu {
+body #menu-main-menu {
 	display: none;
 }
-body.menu-active .menu {
+body.menu-active #menu-main-menu {
 	display: block;
 }
 body.menu-active .mobile-menu { 
@@ -24,27 +24,44 @@ body .mobile-menu-exit {
 }
 h1 {
 	font-size: 1.6em;
-	font-weight: 300;
-	font-style: normal;
-	color: $jh-color;
+    font-weight: 500;
+    font-style: normal;
+	color: $jh-dark;
+	font-family: 'Futura Medium';
 }
-p {
-	font-weight: 300;
-	font-style: normal;
+main p {
+	font-family: 'Futura Book';
+    font-weight: normal;
+    font-style: normal;
 	line-height: 26px;
-	font-size: 1.1em;
+	font-size: 1em;
 }
 header {
 	background-color: #FFF;
+	position: relative;
 	height: 100px;
 	width: 100%;
 	line-height: 60px;
-	border-bottom: 1px solid $jh-color;
-	position: relative;
+	position: fixed;
 	text-align: center;
 	z-index: 5;
 }
-.menu {
+body .shop-menu {
+	display: none;
+}
+body.menu-active .shop-menu {
+	display: block;
+}
+.shop-menu {
+	position: fixed;
+    right: 52px;
+    top: 130px;
+    z-index: 100;
+}
+.if-items i {
+	color: forestgreen;
+}
+#menu-main-menu {
 	position: relative;
 	z-index: 2;
 }
@@ -54,14 +71,36 @@ nav ul {
 	padding-top: 200px;
 
 	li {
-		font-weight: 300;
-    	font-style: normal;
+		font-family: 'Futura Book';
+	    font-weight: normal;
+	    font-style: normal;
     	font-size: 1.4em;
+    	line-height: 60px;
+    	font-weight: 500;
+
+    	a {
+    		text-transform: lowercase;
+    	}
+
+    	&:last-child a {
+			color: $jh-details;
+			border: 2px solid $jh-details;
+			padding: 4px 8px;
+		}
+	}
+	.current-menu-item a {
+		border-bottom: 2px solid $jh-details;
 	}
 	a:hover {
 		text-decoration: none;
 		border-bottom: 2px solid $jh-details;
 	}
+}
+.mobile-logo-jh {
+	display: block;
+}
+.desktop-logo-jh {
+	display: none;
 }
 .logo {
 	width: 130px;
@@ -70,13 +109,29 @@ nav ul {
 	left: 50%; 
 	transform: translate(-50%,0); 
 }
-.header-img {
+.container-header-carousel {
+	margin-bottom: 100px;
+}
+.carousel-box {
+	height: 440px;
+	min-height: 440px;
+	display: table;
+	overflow: hidden;
 	width: 100%;
-	padding-top: 75vh;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: url('../images/header.jpg');
+}
+.logo-friends {
+	width: 70%;
+	padding: 10px;
+	display: block;
+	margin: 0 auto;
+	transition: all .5s ease-in-out;
+
+	&:hover {
+		transform: scale(1.1);
+	}
 }
 .mobile-menu, .mobile-menu-exit {
 	position: absolute;
@@ -96,7 +151,7 @@ nav ul {
 	-webkit-overflow-scrolling: touch;
 }
 main {
-	margin-top: 100px;
+	padding-top: 200px;
 	margin-bottom: 100px;
 }
 .txt-content {
@@ -109,24 +164,23 @@ main {
     background-position: center center;
     background-repeat: no-repeat;
 }
+.social-media {
+	position: absolute;
+	bottom: -60px;
+}
 footer {
-	height: 100px;
-	line-height: 100px;
+	height: 350px;
+	background-color: #fcd8c2;
+	font-family: 'Futura Book';
+	font-size: 0.8em;
+	padding-top: 50px;
 	position: relative;
 
-	p {
-		display: inline-block;
-		vertical-align: middle;
-		font-size: 0.9em;
-		color: $jh-color;
-		float: left;
-		line-height: 100px;
-
-		&:last-child {
-			float: right;
-		}
+	p, a, a:hover {
+		color: #FFF;
 	}
-	.social-media {
-		display: none;
+
+	.right {
+		float: none;
 	}
 }

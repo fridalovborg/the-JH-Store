@@ -2,23 +2,37 @@
 		TABLET
 ------------------------------------------------------------------ */
 @include media-breakpoint-up(md) {
-body .menu {
+body #menu-main-menu {
 	display: block;
 }
 header {
-	line-height: 100px;
+	line-height: 140px;
+	position: relative;
+}
+main {
+	padding-top: 100px;
 }
 nav ul {
 	padding-top: 0;
-}
-nav {
-	float: right;
-	vertical-align: middle;
 
 	li {
 		margin-left: 60px;
     	display: inline-block;
+    	line-height: 40px;
+    	font-size: 1em;
 	}
+}
+nav {
+	float: right;
+	vertical-align: middle;
+}
+.mobile-logo-jh {
+	display: none;
+}
+.desktop-logo-jh {
+	display: block;
+	width: 100px;
+	float: left;
 }
 .logo, nav {
 	display: inline-block;
@@ -27,26 +41,45 @@ nav {
 	left: 0; 
 	transform: translate(0%,0); 
 }
+.container-header-img {
+	padding-top: 0;
+}
+.carousel-box {
+	margin-top: 0px;
+}
 .txt-content {
 	margin-bottom: 0;
 }
 .mobile-menu {
 	display: none;
 }
-//footer
-footer .social-media {
+body .shop-menu {
 	display: block;
+}
+.shop-menu {
 	position: absolute;
-	left: 50%; 
-	transform: translate(-50%,0);
-
-	a {
-		padding: 3px;
-	}
+    right: 25px;
+    top: 15px;
+    z-index: 100;
+}
+//footer
+.social-media {
+	position: static;
+	bottom: none;
+	display: block;
+	text-align: center;
 
 	a:hover {
 		text-decoration: none;
 		opacity: 0.7;
+	}
+}
+footer {
+	height: 300px;
+	padding-top: 100px;
+	
+	.right {
+		float: right;
 	}
 }
 }

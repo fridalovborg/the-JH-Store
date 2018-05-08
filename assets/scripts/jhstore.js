@@ -14,5 +14,23 @@
 			$('.menu-bg').fadeOut();
 		}
 	});
+
+	// color filter
+	$('.filter-btn').click(function() {
+		
+		$('body').toggleClass('filter-active');
+
+		$('.filter-colors').toggleClass('active');
+
+		if ($('.filter-colors').hasClass('active')) {
+			$('.filter-colors').show();
+		} else {
+			$('.filter-colors').hide();
+		}
+	});
+
+	$('.carousel').carousel({
+		interval: 4000
+	});
 	
 })(jQuery);

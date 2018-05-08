@@ -2,12 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="<?= esc_url(home_url('/')); ?>">
+                <a class="mobile-logo-jh" href="<?= esc_url(home_url('/')); ?>">
                     <?php
                     $custom_logo_id = get_theme_mod( 'custom_logo' );
                     $image = wp_get_attachment_image_src( $custom_logo_id , 'small' );
                     ?>
                     <img class="logo" alt="JH Store logo" src="<?php echo $image[0]; ?>">
+                </a>
+                <a class="desktop-logo-jh" href="<?= esc_url(home_url('/')); ?>">
+                    <?php dynamic_sidebar('sidebar-footer'); ?>
                 </a>
                 <nav>
                     <?php
@@ -24,5 +27,11 @@
         </div>
     </div>
 </header>
+<?php if(WC()->cart->get_cart_contents_count() !== 0) { ?>
+    <?php echo '<div class="shop-menu if-items">'; ?>
+    <?php wp_nav_menu( array( 'menu' => 'Shopping') ); ?>
+    <?php echo '</div>'; ?>
+<?php } else { ?>
+    <div class="shop-menu"><?php wp_nav_menu( array( 'menu' => 'Shopping') ); ?></div>
+<?php } ?>
 <div class="menu-bg"></div>
-<div class="header-img"></div>
