@@ -20,96 +20,119 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
+<?php
+$taxonomy     = 'product_cat';
+$orderby	  = 'ASC';
+$show_count   = false;
+$pad_counts   = false;
+$hierarchical = true;
+$title        = '';
+ 
+$args = array(
+  'taxonomy'     => $taxonomy,
+  'orderby'      => $orderby,
+  'show_count'   => $show_count,
+  'pad_counts'   => $pad_counts,
+  'hierarchical' => $hierarchical,
+  'title_li'     => $title
+);
+?>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-		<div class="all-products"><?php wp_nav_menu( array( 'menu' => 'Products') ); ?></div>
-		<button class="filter-btn">Filter</button>
-
-		<?php
-			/**
-			 * woocommerce_before_main_content hook.
-			 *
-			 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-			 * @hooked woocommerce_breadcrumb - 20
-			 * @hooked WC_Structured_Data::generate_website_data() - 30
-			 */
-			//do_action( 'woocommerce_before_main_content' );
-		?>
-
-		<?php if ( have_posts() ) : ?>
+			<div class="all-products">
+				<ul>
+					<?php $events_page = get_post(39); ?>
+					<li class="cat-item"><a href="<?php echo get_permalink($events_page->ID); ?>">Alla produkter</a></li>
+				    <?php wp_list_categories( $args ); ?>
+				</ul>
+			</div>
+			<button class="filter-btn">Filter</button>
 
 			<?php
 				/**
-				 * woocommerce_before_shop_loop hook.
+				 * woocommerce_before_main_content hook.
 				 *
-				 * @hooked wc_print_notices - 10
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
+				 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+				 * @hooked woocommerce_breadcrumb - 20
+				 * @hooked WC_Structured_Data::generate_website_data() - 30
 				 */
-				do_action( 'woocommerce_before_shop_loop' );
+				//do_action( 'woocommerce_before_main_content' );
 			?>
 
-			<?php woocommerce_product_loop_start(); ?>
+			<?php if ( have_posts() ) : ?>
 
-				<?php woocommerce_product_subcategories(); ?>
+				<?php
+					/**
+					 * woocommerce_before_shop_loop hook.
+					 *
+					 * @hooked wc_print_notices - 10
+					 * @hooked woocommerce_result_count - 20
+					 * @hooked woocommerce_catalog_ordering - 30
+					 */
+					do_action( 'woocommerce_before_shop_loop' );
+				?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php woocommerce_product_loop_start(); ?>
 
-					<?php
-						/**
-						 * woocommerce_shop_loop hook.
-						 *
-						 * @hooked WC_Structured_Data::generate_product_data() - 10
-						 */
-						do_action( 'woocommerce_shop_loop' );
-					?>
+					<?php woocommerce_product_subcategories(); ?>
 
-					<?php wc_get_template_part( 'content', 'product' ); ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php endwhile; // end of the loop. ?>
+						<?php
+							/**
+							 * woocommerce_shop_loop hook.
+							 *
+							 * @hooked WC_Structured_Data::generate_product_data() - 10
+							 */
+							do_action( 'woocommerce_shop_loop' );
+						?>
 
-			<?php woocommerce_product_loop_end(); ?>
+						<?php wc_get_template_part( 'content', 'product' ); ?>
+
+					<?php endwhile; // end of the loop. ?>
+
+				<?php woocommerce_product_loop_end(); ?>
+
+				<?php
+					/**
+					 * woocommerce_after_shop_loop hook.
+					 *
+					 * @hooked woocommerce_pagination - 10
+					 */
+					do_action( 'woocommerce_after_shop_loop' );
+				?>
+
+			<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
+
+				<?php
+					/**
+					 * woocommerce_no_products_found hook.
+					 *
+					 * @hooked wc_no_products_found - 10
+					 */
+					do_action( 'woocommerce_no_products_found' );
+				?>
+
+			<?php endif; ?>
 
 			<?php
 				/**
-				 * woocommerce_after_shop_loop hook.
+				 * woocommerce_after_main_content hook.
 				 *
-				 * @hooked woocommerce_pagination - 10
+				 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
 				 */
-				do_action( 'woocommerce_after_shop_loop' );
+				do_action( 'woocommerce_after_main_content' );
 			?>
-
-		<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
 
 			<?php
 				/**
-				 * woocommerce_no_products_found hook.
+				 * woocommerce_sidebar hook.
 				 *
-				 * @hooked wc_no_products_found - 10
+				 * @hooked woocommerce_get_sidebar - 10
 				 */
-				do_action( 'woocommerce_no_products_found' );
+				//do_action( 'woocommerce_sidebar' );
 			?>
-
-		<?php endif; ?>
-
-		<?php
-			/**
-			 * woocommerce_after_main_content hook.
-			 *
-			 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-			 */
-			do_action( 'woocommerce_after_main_content' );
-		?>
-
-		<?php
-			/**
-			 * woocommerce_sidebar hook.
-			 *
-			 * @hooked woocommerce_get_sidebar - 10
-			 */
-			//do_action( 'woocommerce_sidebar' );
-		?>
 		</div>
 	</div>
 </div>

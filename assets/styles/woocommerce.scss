@@ -3,27 +3,30 @@ address, dl, ol, ul {
 	padding-bottom: 0px;
 	margin: 0px;
 }
-.menu-products-container {
+body.post-type-archive .cat-item:first-child {
+	border-bottom: 2px solid $jh-details;
+}
+.all-products {
 	width: 100%;
 	
-	ul#menu-products {
+	ul {
 		padding: 0;
 		text-align: center;
 		padding-bottom: 40px;
 
-		.current-menu-item {
+		.current-cat {
 			border-bottom: 2px solid $jh-details;
 		}
 	}
 
-	li.menu-item-has-children {
+	li {
 		position: relative;
     	display: inline-block;
 	}
-	li.menu-item-has-children:hover ul.sub-menu {
+	li.cat-item:hover ul.children {
 		display: block;
 	}
-	ul.sub-menu {
+	ul.children {
 		display: none;
 		position: absolute;
 		z-index: 200;
@@ -42,7 +45,7 @@ address, dl, ol, ul {
 		}
 	}
 
-	ul#menu-products li {
+	ul li {
 		display: inline-block;
 		margin-right: 10px;
 
@@ -225,4 +228,10 @@ body.filter-active .filter-colors {
 }
 .coupon input[type="submit"] {
 	font-size: .9em !important;
+}
+.woocommerce div.product .stock {
+	color: $jh-details;
+}
+.woocommerce-price-suffix {
+	display: none;
 }
